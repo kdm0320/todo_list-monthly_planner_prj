@@ -53,6 +53,7 @@ function Board({ toDos, boardId }: IBoardProps) {
                 index={index}
                 toDoID={toDo.id}
                 toDoText={toDo.text}
+                boardID={boardId}
               />
             ))}
             {magic.placeholder}

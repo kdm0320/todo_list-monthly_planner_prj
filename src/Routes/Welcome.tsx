@@ -27,17 +27,15 @@ const WelcomName = styled(motion.h2)`
   font-weight: 400;
 `;
 function Welcome() {
-  let name;
+  const name = localStorage.getItem("name");
   const navigate = useNavigate();
+
+  const { register, handleSubmit } = useForm<IForm>();
   useEffect(() => {
-    if (localStorage.getItem("name") === null) {
-      name = "";
-    } else {
-      name = localStorage.getItem("name");
+    if (typeof name === "string") {
+      setTimeout(() => navigate("/todo"), 2000);
     }
   }, []);
-  const { register, handleSubmit } = useForm<IForm>();
-
   const onValid = (data: IForm) => {
     localStorage.setItem("name", data["name"]);
     navigate("/todo");
